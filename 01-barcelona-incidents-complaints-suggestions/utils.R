@@ -2,6 +2,7 @@
 ### Packages
 ############
 library(R.utils)
+library(readr)
 library(shinydashboard)
 library(shinyjs)
 library(shinycssloaders)
@@ -38,12 +39,17 @@ target_columns <- c(
 )
 
 ############
+### Source Functions
+############
+sourceDirectory("functions/")
+
+############
 ### Data
 ############
 filenames <- list.files("data", full.names = TRUE)
 data_barcelona <- Reduce(rbind, lapply(filenames, data_reader))
 
 ############
-### Directory
+### Source Dashboards
 ############
 sourceDirectory("dashboards/")
