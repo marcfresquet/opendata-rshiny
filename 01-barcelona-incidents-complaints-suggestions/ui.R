@@ -5,8 +5,8 @@
 source("utils.R")
 
 # Header
-header <- dashboardHeader(title = "Barcelona - Complains",
-                          tags$li(a(href = "http://opendata-ajuntament.barcelona.cat/data/en/dataset/iris",
+header <- dashboardHeader(title = "Contactes Aj. BCN",
+                          tags$li(a(href = "http://opendata-ajuntament.barcelona.cat/data/ca/dataset/iris",
                                     icon("power-off"),
                                     title = "OpenData Barcelona"),
                                   class = "dropdown"))
