@@ -5,3 +5,6 @@
 
 # Data folders
 01-barcelona-incidents-complaints-suggestions/data/*.csv
+
+# HTML files
+*.html
