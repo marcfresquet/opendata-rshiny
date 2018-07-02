@@ -38,6 +38,44 @@ target_columns <- c(
   "CANALS_RESPOSTA"
 )
 
+numeric_columns <- c(
+  "MES_DATA_ALTA",
+  "ANY_DATA_ALTA",
+  "DIA_DATA_TANCAMENT",
+  "MES_DATA_TANCAMENT",
+  "ANY_DATA_TANCAMENT",
+  "NUMERO",
+  "LONGITUD",
+  "LATITUD"
+)
+
+catalan_months <- c(
+  "Gener",
+  "Febrer",
+  "Març",
+  "Abril",
+  "Maig",
+  "Juny",
+  "Juliol",
+  "Agost",
+  "Septembre",
+  "Octubre",
+  "Novembre",
+  "Decembre"
+)
+
+catalan_days_of_week <- c(
+  "Dilluns",
+  "Dimarts",
+  "Dimecres",
+  "Dijous",
+  "Divendres",
+  "Dissabte",
+  "Diumenge"
+)
+
+min_year <- 2014
+
 ############
 ### Source Functions
 ############
