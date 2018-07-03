@@ -6,9 +6,9 @@ source("utils.R")
 
 # Header
 header <- dashboardHeader(title = "Contactes Aj. BCN",
-                          tags$li(a(href = "http://opendata-ajuntament.barcelona.cat/data/ca/dataset/iris",
-                                    icon("power-off"),
-                                    title = "OpenData Barcelona"),
+                          tags$li(a(href = "https://github.com/marcfresquet/opendata-rshiny/tree/master/01-barcelona-incidents-complaints-suggestions",
+                                    icon("github"),
+                                    title = "marcfresquet/opendata-rshiny"),
                                   class = "dropdown"))
 
 # Sidebar
