@@ -3,8 +3,9 @@
 .RData
 .Ruserdata
 
-# Data folders
+# Project folders
 01-barcelona-incidents-complaints-suggestions/data/*.csv
+01-barcelona-incidents-complaints-suggestions/rsconnect
 
 # HTML files
 *.html
