@@ -34,7 +34,7 @@ body_map <- tabItem(tabName = map_dashboard_id,
     ),
     column(12,
       h5("Fes click a un punt per veure el nom del carrer"),
-      leafletOutput("events_map", width="100%", height="1000px")
+      withSpinner(leafletOutput("events_map", width="100%", height="1000px"))
     )
   )
 )
