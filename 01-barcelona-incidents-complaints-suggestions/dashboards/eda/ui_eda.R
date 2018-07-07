@@ -6,7 +6,7 @@
 eda_dashboard_id = "eda_dashboard"
 
 # Sidebar
-sidebar_eda <- menuItem("Exploració temporal", tabName = eda_dashboard_id, icon = icon("dashboard"))
+sidebar_eda <- menuItem("Exploració temporal", tabName = eda_dashboard_id, icon = icon("calendar"))
 
 # Body
 body_eda <- tabItem(tabName = eda_dashboard_id,

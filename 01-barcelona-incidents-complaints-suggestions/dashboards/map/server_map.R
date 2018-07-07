@@ -21,11 +21,21 @@ server_map <- function(input, output, session) {
       data_bcn <- data_bcn %>% filter(AREA %in% area_selected)
     }
     
-    #  Filter by day
-    data_bcn <- data_bcn %>% filter(DATA_ALTA==input$day_filter)
+    # Filter by day
+    data_bcn <- data_bcn %>%
+      filter(DATA_ALTA >= input$day_filter[1]) %>%
+      filter(DATA_ALTA <= input$day_filter[2])
     
-    #  Filter rows with missing loc values
-    data_bcn <- data_bcn[!is.na(data_bcn$LATITUD),] 
+    # Filter rows with missing loc values
+    data_bcn <- data_bcn[!is.na(data_bcn$LATITUD),]
+    
+    # Check nrow
+    if (nrow(data_bcn) >= max_points_in_map) {
+      data_bcn <- data_bcn[1:max_points_in_map,]
+      showNotification(paste0("S'han limitat els punts a ", max_points_in_map,
+                              ". Pots escollir una diferència temporal més reduïda."),
+                       duration = 10)
+    }
     
     # Return results
     data_bcn
