@@ -12,6 +12,7 @@ library(DT)
 library(lubridate)
 library(highcharter)
 library(tidyr)
+library(leaflet)
 
 ############
 ### Constants
