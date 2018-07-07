@@ -14,14 +14,16 @@ header <- dashboardHeader(title = "Contactes Aj. BCN",
 # Sidebar
 sidebar <- dashboardSidebar(
   sidebarMenu(list(
-    sidebar_eda
+    sidebar_eda,
+    sidebar_map
   ))
 )
 
 # Body
 body <- dashboardBody(
   tabItems(
-    body_eda
+    body_eda,
+    body_map
   )
 )
 
