@@ -15,6 +15,7 @@ header <- dashboardHeader(title = "Contactes Aj. BCN",
 sidebar <- dashboardSidebar(
   sidebarMenu(list(
     sidebar_eda,
+    sidebar_contacts,
     sidebar_map
   ))
 )
@@ -23,6 +24,7 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     body_eda,
+    body_contacts,
     body_map
   )
 )
