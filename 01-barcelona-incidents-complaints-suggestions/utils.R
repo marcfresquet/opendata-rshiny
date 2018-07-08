@@ -77,6 +77,7 @@ catalan_days_of_week <- c(
 
 min_year <- 2014
 max_points_in_map <- 1000
+max_top_n_in_charts <- 15
 
 ############
 ### Source Functions
