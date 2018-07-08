@@ -38,7 +38,7 @@ server_contacts <- function(input, output, session) {
     data_grouped <- group_data(data_barcelona_tipus_filt(), "AREA")
     hchart(data_grouped[[1]], "column", hcaes(x = AREA, y = percentatge)) %>%
       hc_xAxis(title = list(text = NULL)) %>%
-      hc_yAxis(title = list(text = "%"), labels = list(format = "{value}%")) %>% 
+      hc_yAxis(title = list(text = "% contactes"), labels = list(format = "{value}%")) %>% 
       hc_tooltip(pointFormat=paste('<b>{point.y:.1f}%</b>')) %>% 
       hc_title(text = paste("AREA, grups totals:", data_grouped[[2]]))
   })
@@ -48,7 +48,7 @@ server_contacts <- function(input, output, session) {
     data_grouped <- group_data(data_barcelona_tipus_filt(), "ELEMENT")
     hchart(data_grouped[[1]], "column", hcaes(x = ELEMENT, y = percentatge)) %>%
       hc_xAxis(title = list(text = NULL)) %>%
-      hc_yAxis(title = list(text = "%"), labels = list(format = "{value}%")) %>% 
+      hc_yAxis(title = list(text = "% contactes"), labels = list(format = "{value}%")) %>% 
       hc_tooltip(pointFormat=paste('<b>{point.y:.1f}%</b>')) %>% 
       hc_title(text = paste("ELEMENT, grups totals:", data_grouped[[2]]))
   })
@@ -58,7 +58,7 @@ server_contacts <- function(input, output, session) {
     data_grouped <- group_data(data_barcelona_tipus_filt(), "DETALL")
     hchart(data_grouped[[1]], "column", hcaes(x = DETALL, y = percentatge)) %>%
       hc_xAxis(title = list(text = NULL)) %>%
-      hc_yAxis(title = list(text = "%"), labels = list(format = "{value}%")) %>% 
+      hc_yAxis(title = list(text = "% contactes"), labels = list(format = "{value}%")) %>% 
       hc_tooltip(pointFormat=paste('<b>{point.y:.1f}%</b>')) %>% 
       hc_title(text = paste("DETALL, grups totals:", data_grouped[[2]]))
   })
