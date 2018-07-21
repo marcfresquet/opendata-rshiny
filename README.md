@@ -5,3 +5,4 @@ This repo will be used to show some interactive data visualizations by using Shi
 ## Examples
 
 * [01-barcelona-incidents-complains-suggestions](01-barcelona-incidents-complaints-suggestions/README.md)
+* [02-fosses-comunes-catalunya](02-fosses-comunes-catalunya/README.md)
