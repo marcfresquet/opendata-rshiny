@@ -23,6 +23,7 @@ target_columns <- c(
   "Y",
   "Desapareguda",
   "Bandol",
+  "TipusFossa",
   "Notes",
   "Font",
   "Documentacio",
