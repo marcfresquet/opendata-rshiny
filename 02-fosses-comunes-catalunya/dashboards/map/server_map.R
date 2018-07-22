@@ -40,9 +40,6 @@ server_map <- function(input, output, session) {
       data_fos <- data_fos %>% filter(Excavades == input$excavades_filter)
     }
     
-    # Update widget
-    updateSliderInput(session, "num_restes_filter", max = max(na.omit(data_fos$max_restes)))
-    
     #  Filter by NumRestes
     if (input$num_restes_filter[1] > 0 || input$num_restes_filter[2] < max(na.omit(data_fos$max_restes))) {
       data_fos <- data_fos %>%
@@ -86,6 +83,12 @@ server_map <- function(input, output, session) {
     if (nrow(data_map) == 1) {
       m <- m %>%
         setView(max(data_map$X), max(data_map$Y), zoom = 18)
+    }
+    
+    # Zoom if no points to plot
+    if (nrow(data_map) == 0) {
+      m <- m %>%
+        setView(1, 41, zoom = 8)
     }
     
     # Return leaflet object
