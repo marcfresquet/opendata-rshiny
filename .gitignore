@@ -6,6 +6,7 @@
 # Project folders
 01-barcelona-incidents-complaints-suggestions/data/*.csv
 01-barcelona-incidents-complaints-suggestions/rsconnect
+02-fosses-comunes-catalunya/rsconnect
 
 # HTML files
 *.html
