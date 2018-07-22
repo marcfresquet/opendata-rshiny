@@ -4,6 +4,11 @@
 
 server_map <- function(input, output, session) {
   
+  # Reset all filters
+  observeEvent(input$resetFilters, {
+    reset("filters")
+  })
+  
   # Filter the data
   data_fosses_filt <- reactive({
     
@@ -36,8 +41,7 @@ server_map <- function(input, output, session) {
     }
     
     # Update widget
-    updateSliderInput(session, "num_restes_filter", max = max(na.omit(data_fos$max_restes)), 
-                      value = c(0, max(na.omit(data_fos$max_restes))))
+    updateSliderInput(session, "num_restes_filter", max = max(na.omit(data_fos$max_restes)))
     
     #  Filter by NumRestes
     if (input$num_restes_filter[1] > 0 || input$num_restes_filter[2] < max(na.omit(data_fos$max_restes))) {
