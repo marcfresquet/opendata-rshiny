@@ -35,8 +35,12 @@ server_map <- function(input, output, session) {
       data_fos <- data_fos %>% filter(Excavades == input$excavades_filter)
     }
     
+    # Update widget
+    updateSliderInput(session, "num_restes_filter", max = max(na.omit(data_fos$max_restes)), 
+                      value = c(0, max(na.omit(data_fos$max_restes))))
+    
     #  Filter by NumRestes
-    if (input$num_restes_filter[1] > 0 || input$num_restes_filter[2] < max(na.omit(data_fosses$max_restes))) {
+    if (input$num_restes_filter[1] > 0 || input$num_restes_filter[2] < max(na.omit(data_fos$max_restes))) {
       data_fos <- data_fos %>%
         filter(min_restes >= input$num_restes_filter[1]) %>%
         filter(max_restes <= input$num_restes_filter[2])
