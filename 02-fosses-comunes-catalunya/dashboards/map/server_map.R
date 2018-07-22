@@ -9,25 +9,37 @@ server_map <- function(input, output, session) {
     
     data_fos <- data_fosses
     
-    #  Filter by municipi (optional filter)
+    #  Filter by municipi
     if (!is.null(input$municipi_filter)) {
       municipi_selected <- format_selectize_input_values(input$municipi_filter)
       data_fos <- data_fos %>% filter(Municipi %in% municipi_selected)
     }
     
-    #  Filter by bandol (optional filter)
+    #  Filter by confirmada
+    if (input$confirmada_filter != "Mostra tot") {
+      data_fos <- data_fos %>% filter(IdCategoria == input$confirmada_filter)
+    }
+    
+    #  Filter by bandol
     if (input$bandol_filter != "Mostra tot") {
       data_fos <- data_fos %>% filter(Bandol == input$bandol_filter)
     }
     
-    #  Filter by tipus fossa (optional filter)
+    #  Filter by tipus fossa
     if (input$tipus_fossa_filter != "Mostra tot") {
       data_fos <- data_fos %>% filter(TipusFossa == input$tipus_fossa_filter)
     }
     
-    #  Filter by excavades (optional filter)
+    #  Filter by excavades
     if (input$excavades_filter != "Mostra tot") {
       data_fos <- data_fos %>% filter(Excavades == input$excavades_filter)
+    }
+    
+    #  Filter by NumRestes
+    if (input$num_restes_filter[1] > 0 || input$num_restes_filter[2] < max(na.omit(data_fosses$max_restes))) {
+      data_fos <- data_fos %>%
+        filter(min_restes >= input$num_restes_filter[1]) %>%
+        filter(max_restes <= input$num_restes_filter[2])
     }
     
     # Return results
