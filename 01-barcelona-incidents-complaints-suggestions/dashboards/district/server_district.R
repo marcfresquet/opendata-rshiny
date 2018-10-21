@@ -11,7 +11,8 @@ server_district <- function(input, output, session) {
       group_by(ANY_DATA_ALTA, DISTRICTE) %>% 
       summarise(n = n()) %>% 
       arrange(desc(n)) %>% 
-      filter(!is.na(DISTRICTE))
+      filter(!is.na(DISTRICTE)) %>% 
+      arrange(DISTRICTE)
     # Plot output
     hchart(data, "column", hcaes(x = DISTRICTE, y = n, group = ANY_DATA_ALTA)) %>%
       hc_title(text = "Evolució temporal de les incidències per districte") %>%
@@ -36,7 +37,8 @@ server_district <- function(input, output, session) {
       group_by(AREA, DISTRICTE) %>% 
       summarise(n = n()) %>% 
       arrange(desc(n)) %>% 
-      filter(!is.na(DISTRICTE))
+      filter(!is.na(DISTRICTE)) %>% 
+      arrange(DISTRICTE)
     # Plot output
     hchart(data, "column", hcaes(x = DISTRICTE, y = n, group = AREA)) %>%
       hc_title(text = "Distribució de les incidències per districte") %>%
