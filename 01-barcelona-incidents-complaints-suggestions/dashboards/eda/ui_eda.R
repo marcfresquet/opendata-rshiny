@@ -13,6 +13,7 @@ body_eda <- tabItem(tabName = eda_dashboard_id,
   fluidRow(
     useShinyjs(),
     column(12,
+      h4("Dades actualitzades fins al 2018/09/30"),
       valueBoxOutput("box_n_rows", width = 6),
       valueBoxOutput("box_n_years", width = 6)
     ),

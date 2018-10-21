@@ -93,6 +93,11 @@ filenames <- list.files("data", full.names = TRUE)
 data_barcelona <- Reduce(rbind, lapply(filenames, data_reader))
 
 ############
+### Useful data
+############
+data_bcn_with_coords <- data_barcelona[!is.na(data_barcelona$LATITUD),]
+
+############
 ### Source Dashboards
 ############
 sourceDirectory("dashboards/")

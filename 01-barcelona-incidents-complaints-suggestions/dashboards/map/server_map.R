@@ -7,38 +7,34 @@ server_map <- function(input, output, session) {
   # Filter the data
   data_barcelona_filt <- reactive({
     
-    data_bcn <- data_barcelona
+    # Filter by TIPUS incident and day
+    data <- data_bcn_with_coords %>%
+      filter(DATA_ALTA == input$day_filter) %>%
+      filter(TIPUS == "INCIDENCIA")
     
-    #  Filter by tipus (optional filter)
-    if (!is.null(input$tipus_filter)) {
-      tipus_selected <- format_selectize_input_values(input$tipus_filter)
-      data_bcn <- data_bcn %>% filter(TIPUS %in% tipus_selected)
-    }
+    shiny::validate(need(nrow(data) >= 1, "No hi ha incidències per aquest dia."))
+    data
     
-    #  Filter by area (optional filter)
-    if (!is.null(input$area_filter)) {
-      area_selected <- format_selectize_input_values(input$area_filter)
-      data_bcn <- data_bcn %>% filter(AREA %in% area_selected)
-    }
+  })
+  
+  # Update selectizeInput for area
+  observeEvent(input$day_filter, {
+    data <- data_barcelona_filt()
+    updateSelectizeInput(session, "area_filter", choices=unique(data$AREA))
+  })
+  
+  ### Incidents per area output
+  output$incidents_per_area <- renderHighchart({
     
-    # Filter by day
-    data_bcn <- data_bcn %>%
-      filter(DATA_ALTA >= input$day_filter[1]) %>%
-      filter(DATA_ALTA <= input$day_filter[2])
+    data <- data_barcelona_filt() %>%
+      group_by(AREA) %>% 
+      summarise(n = n()) %>% 
+      arrange(desc(n))
     
-    # Filter rows with missing loc values
-    data_bcn <- data_bcn[!is.na(data_bcn$LATITUD),]
-    
-    # Check nrow
-    if (nrow(data_bcn) >= max_points_in_map) {
-      data_bcn <- data_bcn[1:max_points_in_map,]
-      showNotification(paste0("S'han limitat els punts a ", max_points_in_map,
-                              ". Pots escollir una diferència temporal més reduïda."),
-                       duration = 10)
-    }
-    
-    # Return results
-    data_bcn
+    hchart(data, "bar", hcaes(x = AREA, y = n), name = "Nº d'incidències") %>%
+      hc_title(text = paste(sum(data$n), " incidències")) %>%
+      hc_yAxis(title = list(text = "Nº d'incidències"), allowDecimals = FALSE) %>%
+      hc_xAxis(title = list(text = "Àrea"))
     
   })
   
@@ -46,7 +42,15 @@ server_map <- function(input, output, session) {
   output$events_map <- renderLeaflet({
     
     # Get data and add markers
-    data_map <- data_barcelona_filt()
+    data_map <- data_barcelona_filt()  
+    
+    #  Filter by area (optional filter)
+    if (!is.null(input$area_filter)) {
+      area_selected <- format_selectize_input_values(input$area_filter)
+      data_map <- data_map %>% filter(AREA %in% area_selected)
+    }
+    
+    shiny::validate(need(nrow(data_map) >= 1, "No hi ha incidències amb aquests filtres"))
     
     # Format labels
     map_labels <- lapply(seq(nrow(data_map)), function(i) {

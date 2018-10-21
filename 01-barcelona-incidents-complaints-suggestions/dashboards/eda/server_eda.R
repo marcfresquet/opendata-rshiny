@@ -74,12 +74,13 @@ server_eda <- function(input, output, session) {
     storage.mode(data_xts) <- "numeric"
     # Plot output
     highchart(type = "stock") %>% 
+      hc_title(text = "Evolució del nombre de contactes per dia i la mitjana de dies fins a la seva resolució") %>%
       # create axis
       hc_yAxis_multiples(
         create_yaxis(2, height = c(2, 1), turnopposite = TRUE)
       ) %>% 
       # series
-      hc_add_series(data_xts$dies_fins_tancament, yAxis = 0, name = "Mitjana de dies fins tancament") %>% 
+      hc_add_series(data_xts$dies_fins_tancament, yAxis = 0, name = "Mitjana de dies fins resolució") %>% 
       hc_add_series(data_xts$contactes, yAxis = 1, name = "Nombre de contactes", type = "column") %>% 
       hc_tooltip(valueDecimals = 1)
   })
