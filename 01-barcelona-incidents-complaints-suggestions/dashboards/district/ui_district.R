@@ -13,7 +13,8 @@ body_district <- tabItem(tabName = district_dashboard_id,
   fluidRow(
     useShinyjs(),
     column(12,
-           withSpinner(highchartOutput("incidents_per_districte"))
+           withSpinner(highchartOutput("incidents_per_district")),
+           withSpinner(highchartOutput("incidents_per_district_and_area"))
     )
   )
 )

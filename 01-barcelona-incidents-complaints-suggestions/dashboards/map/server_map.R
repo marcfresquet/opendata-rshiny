@@ -31,7 +31,8 @@ server_map <- function(input, output, session) {
       summarise(n = n()) %>% 
       arrange(desc(n))
     
-    hchart(data, "bar", hcaes(x = AREA, y = n)) %>%
+    hchart(data, "bar", hcaes(x = AREA, y = n), name = "Nº d'incidències") %>%
+      hc_title(text = paste(sum(data$n), " incidències")) %>%
       hc_yAxis(title = list(text = "Nº d'incidències"), allowDecimals = FALSE) %>%
       hc_xAxis(title = list(text = "Àrea"))
     
