@@ -16,6 +16,7 @@ sidebar <- dashboardSidebar(
   sidebarMenu(list(
     sidebar_eda,
     sidebar_contacts,
+    sidebar_district,
     sidebar_map
   ))
 )
@@ -25,6 +26,7 @@ body <- dashboardBody(
   tabItems(
     body_eda,
     body_contacts,
+    body_district,
     body_map
   )
 )
