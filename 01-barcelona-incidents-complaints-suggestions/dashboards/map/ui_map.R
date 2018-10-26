@@ -22,7 +22,7 @@ body_map <- tabItem(tabName = map_dashboard_id,
                    column(12, dateInput("day_filter", "Dia",
                                         min = min(data_barcelona$DATA_ALTA),
                                         max = max(data_barcelona$DATA_ALTA),
-                                        value = max(data_barcelona$DATA_ALTA),
+                                        value = default_day_map,
                                         language = "ca",
                                         weekstart = 1)),
                    column(12, selectizeInput("area_filter", "Àrea (1 o més)", unique(data_barcelona$AREA), multiple = TRUE, options = selectizeInput_opts))
